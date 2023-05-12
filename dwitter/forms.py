@@ -1,5 +1,5 @@
 from django import forms
-from .models import Dweet
+from .models import *
 
 
 class DweetForm(forms.ModelForm):
@@ -15,3 +15,8 @@ class DweetForm(forms.ModelForm):
     class Meta:
         model = Dweet
         exclude = ("user", )
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(required=True, label="Username")
+    password = forms.CharField(required=True, widget=forms.widgets.PasswordInput, label="Password")

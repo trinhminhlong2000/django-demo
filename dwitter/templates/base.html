@@ -9,19 +9,25 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static
+    "admin/css/base.css" %}{% endblock %}">
   </head>
   <body>
-    <a href="{% url 'dwitter:dashboard' %} ">
-      <section class="hero is-small is-success mb-4">
+    <section class="hero is-small is-success mb-4">
+      <a href="{% url 'dwitter:dashboard' %} ">
         <div class="hero-body">
           <h1 class="title is-1">Dwitter</h1>
           <p class="subtitle is-4">
             Your tiny social network built with Django
           </p>
         </div>
-      </section>
-    </a>
-
+      </a>
+      {% if user.is_authenticated %} Hello {{user}}
+      <a href="{% url 'dwitter:logout' %}">Logout</a>
+      {% else %}
+      <a href="{% url 'dwitter:login' %}">Login</a>
+      {% endif %}
+    </section>
     <div class="container">
       <div class="columns">{% block content %} {% endblock content %}</div>
     </div>

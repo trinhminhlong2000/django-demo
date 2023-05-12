@@ -42,3 +42,10 @@ class Dweet(models.Model):
             f"({self.created_at:%Y-%m-%d %H:%M}): "
             f"{self.body[:30]}..."
         )
+
+
+class NumberDemo(models.Model):
+    name = models.CharField(max_length=140)
+
+    def __str__(self):
+        return self.name
